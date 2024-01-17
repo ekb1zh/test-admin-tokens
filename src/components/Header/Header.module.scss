@@ -1,4 +1,9 @@
 .Card {
+  display: flex;
+  padding: var(--desktop-spacer-lvl_1, 16px) 24px;
+  align-items: center;
+  gap: 44px;
+
   & > :last-child {
     margin-left: auto;
   }
