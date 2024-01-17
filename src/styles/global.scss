@@ -1,7 +1,21 @@
 :root {
+  /*
+    Base
+  */
   box-sizing: border-box;
   height: 100%;
-  font-family: sans-serif;
+
+  /*
+    Colors
+  */
+  --Base-Weak: #fff;
+  --darktheme-base-black: #0e0c15;
+  --darktheme-Gray-scale-Gray-4: #121825;
+
+  /*
+    Sizes
+  */
+  --desktop-spacer-lvl_1: 16px;
 }
 
 *,
