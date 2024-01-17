@@ -1,0 +1,14 @@
+.Root {
+  border-style: solid;
+  border-color: var(--darktheme-Gray-scale-Gray-3, #222b44);
+  border-width: 0;
+
+  &_horizontal {
+    border-bottom-width: 1px;
+  }
+
+  &_vertical {
+    border-left-width: 1px;
+    height: 100%;
+  }
+}
