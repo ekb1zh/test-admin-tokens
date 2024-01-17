@@ -1,0 +1,17 @@
+.Root {
+  display: flex;
+  align-items: center;
+  gap: var(--mobile-spacer-lvl_1, 10px);
+}
+
+.IconContainer {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 4px;
+  background: var(--darktheme-Gray-scale-Gray-3, #222b44);
+}
