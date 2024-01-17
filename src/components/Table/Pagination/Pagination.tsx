@@ -33,6 +33,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
   const renderNumberButton = useCallback(
     (index: number, isSelected: boolean) => (
       <button
+        key={index}
         type='button'
         className={clsx(
           styles.Button,
@@ -57,51 +58,46 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
     [],
   )
 
-  const numberButtons = useMemo(() => {
+  const range = useMemo(() => {
+    const numberButtons = Array.from({
+      length: Math.min(lengthTotal, lengthOfRange),
+    }).map((_, index) =>
+      renderNumberButton(
+        firstInRange + index,
+        current === firstInRange + index,
+      ),
+    )
+
     const isDotsLeft = current > Math.floor((lengthTotal - 1) / 2)
 
-    const result =
-      lengthTotal > lengthOfRange
-        ? [
-            isDotsLeft && (
-              <>
-                {renderNumberButton(0, current === 0)}
-                {renderDots()}
-              </>
-            ),
+    if (lengthTotal > lengthOfRange) {
+      return [
+        isDotsLeft && (
+          <>
+            {renderNumberButton(0, current === 0)}
+            {renderDots()}
+          </>
+        ),
 
-            ...Array.from({ length: lengthOfRange }).map((_, index) =>
-              renderNumberButton(
-                firstInRange + index,
-                current === firstInRange + index,
-              ),
-            ),
+        ...numberButtons,
 
-            !isDotsLeft && (
-              <>
-                {renderDots()}
-                {renderNumberButton(
-                  lengthTotal - 1,
-                  current === lengthTotal - 1,
-                )}
-              </>
-            ),
-          ]
-        : Array.from({ length: lengthTotal }).map((_, index) =>
-            renderNumberButton(
-              firstInRange + index,
-              current === firstInRange + index,
-            ),
-          )
-
-    return result
+        !isDotsLeft && (
+          <>
+            {renderDots()}
+            {renderNumberButton(lengthTotal - 1, current === lengthTotal - 1)}
+          </>
+        ),
+      ]
+    } else {
+      return numberButtons
+    }
   }, [
     current,
     firstInRange,
     lengthOfRange,
+    lengthTotal,
     renderDots,
     renderNumberButton,
-    lengthTotal,
   ])
 
   return (
@@ -115,7 +111,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
         <Icon.ArrowNarrowLeft />
       </button>
 
-      {numberButtons}
+      {range}
 
       <button
         type='button'
