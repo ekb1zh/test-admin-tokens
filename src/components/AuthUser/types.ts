@@ -1,1 +1,3 @@
-export interface AuthUserProps {}
+export interface AuthUserProps {
+  className?: string
+}
