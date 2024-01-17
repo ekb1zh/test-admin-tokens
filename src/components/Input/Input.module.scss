@@ -1,0 +1,30 @@
+.Root {
+  display: flex;
+  align-items: center;
+  gap: var(--mobile-spacer-lvl_1, 10px);
+  padding: 0 16px;
+
+  border-radius: var(--const-spacer-lvl_1, 8px);
+  border: 1px solid var(--darktheme-Gray-scale-Gray-2, #313e62);
+  background: var(--darktheme-Gray-scale-Gray-4, #121825);
+}
+
+.Input {
+  color: var(--darktheme-base-white, #fff);
+
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+
+  width: 100%;
+  padding: 14px 0;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--darktheme-Gray-scale-Gray-1, #616d8d);
+  }
+}
