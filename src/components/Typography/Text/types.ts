@@ -9,4 +9,5 @@ export interface TextProps {
     | 'body-s-medium'
     | 'body-xs-regular'
   children: string
+  className?: string
 }

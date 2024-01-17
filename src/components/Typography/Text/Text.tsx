@@ -9,16 +9,17 @@ import { TextProps } from 'src/components/Typography/Text/types'
 import styles from 'src/components/Typography/Text/Text.module.scss'
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>(
-  ({ resolution, type, children }, ref) => {
-    const className = clsx(
+  ({ resolution, type, children, className }, ref) => {
+    const cn = clsx(
       styles.Root,
       styles[
         `Root_${resolutionToClassName[resolution]}_${typeToClassName[type]}`
       ],
+      className,
     )
 
     return (
-      <span ref={ref} className={className}>
+      <span ref={ref} className={cn}>
         {children}
       </span>
     )
