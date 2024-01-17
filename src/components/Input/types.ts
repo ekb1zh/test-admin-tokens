@@ -7,4 +7,5 @@ export interface InputProps
     event: Parameters<NonNullable<InputElement['onChange']>>[0],
   ) => void
   className?: string
+  icon?: React.ReactNode
 }
