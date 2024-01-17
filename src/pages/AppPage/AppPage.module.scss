@@ -1,0 +1,9 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 34px 40px;
+  height: 100%;
+
+  background: var(--darktheme-base-black, #0e0c15);
+}
