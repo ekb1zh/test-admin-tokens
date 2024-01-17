@@ -8,12 +8,3 @@ export const typeToClassName: Record<HeadlinesProps['type'], string> = {
   h5: 'H5',
   h6: 'H6',
 }
-
-export const resolutionToClassName: Record<
-  HeadlinesProps['resolution'],
-  string
-> = {
-  desktop: 'Desktop',
-  tablet: 'Tablet',
-  mobile: 'Mobile',
-}

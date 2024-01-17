@@ -1,5 +1,4 @@
 export interface TextProps {
-  resolution: 'desktop' | 'tablet' | 'mobile'
   type:
     | 'body-xxl-semibold'
     | 'body-xl-semibold'

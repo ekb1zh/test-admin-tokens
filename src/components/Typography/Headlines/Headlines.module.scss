@@ -5,49 +5,39 @@
   font-family: 'IBM Plex Sans', sans-serif;
   font-style: normal;
 
-  &_Desktop {
-    &_H1 {
-      font-size: 46px;
-      font-weight: 700;
-      line-height: 60px;
-    }
-
-    &_H2 {
-      font-size: 34px;
-      font-weight: 600;
-      line-height: 44px;
-    }
-
-    &_H3 {
-      font-size: 30px;
-      font-weight: 600;
-      line-height: 40px;
-    }
-
-    &_H4 {
-      font-size: 26px;
-      font-weight: 600;
-      line-height: 34px;
-    }
-
-    &_H5 {
-      font-size: 22px;
-      font-weight: 600;
-      line-height: 30px;
-    }
-
-    &_H6 {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 24px;
-    }
+  &_H1 {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 60px;
   }
 
-  /*
-    &_Tablet {}
-  */
+  &_H2 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 44px;
+  }
 
-  /*
-    &_Mobile {}
-  */
+  &_H3 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 40px;
+  }
+
+  &_H4 {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 34px;
+  }
+
+  &_H5 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+
+  &_H6 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+  }
 }

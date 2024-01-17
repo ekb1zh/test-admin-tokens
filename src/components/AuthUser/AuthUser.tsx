@@ -15,17 +15,11 @@ export const AuthUser = forwardRef<HTMLDivElement, AuthUserProps>(
         <Icon.DefaultAvatar />
 
         <div className={styles.Container}>
-          <Typography.Text
-            resolution='desktop'
-            type='body-xs-regular'
-            className={styles.Text1}
-          >
+          <Typography.Text type='body-xs-regular' className={styles.Text1}>
             Вы авторизованы
           </Typography.Text>
 
-          <Typography.Text resolution='desktop' type='body-s-medium'>
-            Администратор
-          </Typography.Text>
+          <Typography.Text type='body-s-medium'>Администратор</Typography.Text>
         </div>
       </div>
     )

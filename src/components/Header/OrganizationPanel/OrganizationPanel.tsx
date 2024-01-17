@@ -18,9 +18,7 @@ export const OrganizationPanel = forwardRef<
         <Icon.Organization />
       </div>
 
-      <Typography.Text resolution='desktop' type='body-m-medium'>
-        Моя организация
-      </Typography.Text>
+      <Typography.Text type='body-m-medium'>Моя организация</Typography.Text>
     </div>
   )
 })

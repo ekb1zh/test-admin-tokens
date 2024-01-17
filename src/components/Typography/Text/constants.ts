@@ -9,9 +9,3 @@ export const typeToClassName: Record<TextProps['type'], string> = {
   'body-s-medium': 'BodySMedium',
   'body-xs-regular': 'BodyXsRegular',
 }
-
-export const resolutionToClassName: Record<TextProps['resolution'], string> = {
-  desktop: 'Desktop',
-  tablet: 'Tablet',
-  mobile: 'Mobile',
-}

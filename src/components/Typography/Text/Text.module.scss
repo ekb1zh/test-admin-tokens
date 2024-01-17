@@ -4,55 +4,45 @@
   font-family: 'IBM Plex Sans', sans-serif;
   font-style: normal;
 
-  &_Desktop {
-    &_BodyXxlSemibold {
-      font-size: 26px;
-      font-weight: 600;
-      line-height: 34px;
-    }
-
-    &_BodyXlSemibold {
-      font-size: 22px;
-      font-weight: 600;
-      line-height: 29px;
-    }
-
-    &_BodyMSemibold {
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 22px;
-    }
-
-    &_BodyMMedium {
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 22px;
-    }
-
-    &_BodyMRegular {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 22px;
-    }
-
-    &_BodySMedium {
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 18px;
-    }
-
-    &_BodyXsRegular {
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 16px;
-    }
+  &_BodyXxlSemibold {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 34px;
   }
 
-  /*
-    &_Tablet {}
-  */
+  &_BodyXlSemibold {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 29px;
+  }
 
-  /*
-    &_Mobile {}
-  */
+  &_BodyMSemibold {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  &_BodyMMedium {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+
+  &_BodyMRegular {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  &_BodySMedium {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  &_BodyXsRegular {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
 }
