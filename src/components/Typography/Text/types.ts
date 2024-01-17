@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export interface TextProps {
   type:
     | 'body-xxl-semibold'
@@ -7,6 +9,6 @@ export interface TextProps {
     | 'body-m-regular'
     | 'body-s-medium'
     | 'body-xs-regular'
-  children: string
+  children: ReactNode
   className?: string
 }
