@@ -1,6 +1,7 @@
 .Root {
   margin: 0;
   color: var(--Base-Weak, #fff);
+  word-break: break-all;
 
   font-family: 'IBM Plex Sans', sans-serif;
   font-style: normal;
