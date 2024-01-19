@@ -6,16 +6,32 @@ export interface ClickEvent {
   cellIndex: number
 }
 
-export interface HeaderCell<T extends ReactNode = ReactNode> {
-  label: string | number
+export interface Column<T = any> {
+  label: T
   renderCell?: (value: T) => ReactNode
   onClick?: (event: ClickEvent) => void
-  sortFn?: (a: T, b: T) => number
+  sort?: (a: T, b: T) => number
 }
 
-export interface TableProps<T extends ReactNode = ReactNode> {
-  headerRow: HeaderCell[]
-  contentRows: T[][]
-  paginationState?: PaginationState
+export interface TablePaginationProps {
+  state: PaginationState
+  setState: (state: PaginationState) => void
+}
+
+export default interface TableSortingProps {
+  state: SortingState
+  setState: (state: SortingState) => void
+}
+
+export interface SortingState {
+  columnIndex: number
+  mode: 'asc' | 'desc'
+}
+
+export interface TableProps {
+  columns: Column[]
+  rows: any[][]
+  pagination?: TablePaginationProps
+  sorting?: TableSortingProps
   className?: string
 }

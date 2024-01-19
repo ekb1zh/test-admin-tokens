@@ -3,13 +3,15 @@
   flex-direction: column;
 }
 
+.Main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .Content {
   display: flex;
   flex-direction: column;
-
-  & > :not(:last-child) {
-    border-bottom: 1px solid var(--darktheme-Gray-scale-Gray-3, #222b44);
-  }
 }
 
 .HeaderRow {
@@ -28,12 +30,21 @@
   flex: 1 0 0;
 }
 
+.HeaderCellSortButton {
+  display: inline-flex;
+
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .HeaderCellContent {
   color: var(--darktheme-Gray-scale-Gray-6, #9ca3af);
 }
 
 .ContentRow {
   display: flex;
+  border-bottom: 1px solid var(--darktheme-Gray-scale-Gray-3, #222b44);
 }
 
 .ContentCell {
@@ -44,4 +55,14 @@
   align-items: center;
   gap: var(--mobile-spacer-lvl_1, 10px);
   flex: 1 0 0;
+
+  &_clickable {
+    cursor: pointer;
+  }
+}
+
+.Footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
