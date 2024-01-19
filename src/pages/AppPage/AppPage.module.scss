@@ -7,3 +7,19 @@
 
   background: var(--darktheme-base-black, #0e0c15);
 }
+
+.Card {
+  height: 100%;
+}
+
+.Text1 {
+  padding: 24px 34px;
+}
+
+.Text2 {
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px 34px;
+  gap: 24px;
+}
