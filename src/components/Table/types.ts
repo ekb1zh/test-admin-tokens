@@ -26,10 +26,10 @@ export interface Pagination {
 }
 
 export interface PaginationState {
-  current: number // zero-based index
-  firstInRange: number // zero-based index
+  currentPage: number // zero-based index
+  firstPageInRange: number // zero-based index
   lengthOfRange: number
-  lengthOnPage: number
+  lengthOfPage: number
 }
 
 export interface Sorting {
@@ -48,14 +48,17 @@ export interface PaginationManager {
 }
 
 export interface PaginationManagerState {
-  first: number
-  last: number
-  current: number
-  firstInRange: number
-  lastInRange: number
+  firstRow: number // zero-based index
+  lastRow: number // zero-based index
+  firstPage: number // zero-based index
+  lastPage: number // zero-based index
+  firstPageInRange: number // zero-based index
+  lastPageInRange: number // zero-based index
+  currentPage: number // zero-based index
   lengthOfRange: number
-  lengthOnPage: number
-  lengthTotal: number
+  lengthOfPage: number
+  lengthTotalRows: number
+  lengthTotalPages: number
 }
 
 export interface TableProviderProps extends TableProps {

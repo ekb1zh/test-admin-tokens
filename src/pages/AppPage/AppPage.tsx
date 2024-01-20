@@ -55,10 +55,10 @@ const rows: TableProps['rows'] = Array.from({ length: 100 }).map(() =>
 )
 
 const initialPaginationState = (): PaginationState => ({
-  current: 0,
-  firstInRange: 0,
+  currentPage: 0,
+  firstPageInRange: 0,
   lengthOfRange: 4,
-  lengthOnPage: 10,
+  lengthOfPage: 10,
 })
 
 const initialSortingState = (): SortingState => ({

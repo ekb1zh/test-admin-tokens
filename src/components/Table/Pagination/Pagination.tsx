@@ -1,4 +1,4 @@
-import { Fragment, forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 import Icon from 'src/components/Icon'
 import ArrowButton from 'src/components/Table/Pagination/ArrowButton'
@@ -15,69 +15,71 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
   }
 
   const {
-    state: { current, firstInRange, lengthOfRange, lengthTotal, first, last },
+    state: {
+      firstPage,
+      lastPage,
+      currentPage,
+      firstPageInRange,
+      lengthOfRange,
+      lengthTotalPages,
+    },
     goToIndex,
   } = paginationManager
 
   const renderRange = () => {
-    const numberButtons = Array.from({
-      length: Math.min(lengthTotal, lengthOfRange),
+    const range = Array.from({
+      length: Math.min(lengthOfRange, lengthTotalPages),
     }).map((_, index) => {
-      const shiftIndex = firstInRange + index
+      const shiftIndex = firstPageInRange + index
 
       return (
         <NumericButton
           key={shiftIndex}
           onClick={() => goToIndex(shiftIndex)}
-          isSelected={current === shiftIndex}
+          isSelected={currentPage === shiftIndex}
         >
           {shiftIndex + 1}
         </NumericButton>
       )
     })
 
-    const isDotsLeft = current > Math.floor((lengthTotal - 1) / 2)
+    const hasDots = lengthTotalPages > lengthOfRange
+    const isDotsLeft = currentPage > Math.floor((lengthTotalPages - 1) / 2)
 
-    if (lengthTotal > lengthOfRange) {
-      return [
-        isDotsLeft && (
-          <Fragment key='first'>
-            <NumericButton
-              onClick={() => goToIndex(first)}
-              isSelected={current === first}
-            >
-              {first + 1}
-            </NumericButton>
-
-            <Dots />
-          </Fragment>
-        ),
-
-        ...numberButtons,
-
-        !isDotsLeft && (
-          <Fragment key='last'>
-            <Dots />
-
-            <NumericButton
-              onClick={() => goToIndex(last)}
-              isSelected={current === last}
-            >
-              {last + 1}
-            </NumericButton>
-          </Fragment>
-        ),
-      ]
-    } else {
-      return numberButtons
+    if (hasDots) {
+      if (isDotsLeft) {
+        range.unshift(
+          <NumericButton
+            key={firstPage}
+            onClick={() => goToIndex(firstPage)}
+            isSelected={currentPage === firstPage}
+          >
+            {firstPage + 1}
+          </NumericButton>,
+          <Dots />,
+        )
+      } else {
+        range.push(
+          <Dots />,
+          <NumericButton
+            key={lastPage}
+            onClick={() => goToIndex(lastPage)}
+            isSelected={currentPage === lastPage}
+          >
+            {lastPage + 1}
+          </NumericButton>,
+        )
+      }
     }
+
+    return range
   }
 
   return (
     <div ref={ref} className={styles.Root}>
       <ArrowButton
-        onClick={() => goToIndex(current - 1)}
-        disabled={current === first}
+        onClick={() => goToIndex(currentPage - 1)}
+        disabled={currentPage === firstPage}
       >
         <Icon.ArrowNarrowLeft />
       </ArrowButton>
@@ -85,8 +87,8 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
       {renderRange()}
 
       <ArrowButton
-        onClick={() => goToIndex(current + 1)}
-        disabled={current === last}
+        onClick={() => goToIndex(currentPage + 1)}
+        disabled={currentPage === lastPage}
       >
         <Icon.ArrowNarrowRight />
       </ArrowButton>

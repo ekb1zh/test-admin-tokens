@@ -25,33 +25,38 @@ export const TableProvider: FC<TableProviderProps> = ({
     }
 
     const {
-      state: { current, firstInRange, lengthOfRange, lengthOnPage },
+      state: { currentPage, firstPageInRange, lengthOfRange, lengthOfPage },
       setState,
     } = pagination
 
-    const lengthTotal = rows.length
-    const first = 0
-    const last = lengthTotal - 1
-    const lastInRange = firstInRange + lengthOfRange - 1
+    const lengthTotalRows = rows.length
+    const firstRow = 0
+    const lastRow = lengthTotalRows - 1
+
+    const lengthTotalPages = Math.ceil(lengthTotalRows / lengthOfPage)
+    const firstPage = 0
+    const lastPage = lengthTotalPages - 1
+
+    const lastPageInRange = firstPageInRange + lengthOfRange - 1
 
     const goToIndex = (index: number) => {
       const nextState: PaginationState = {
-        current,
-        firstInRange,
+        currentPage: currentPage,
+        firstPageInRange: firstPageInRange,
         lengthOfRange,
-        lengthOnPage,
+        lengthOfPage,
       }
 
-      if (index >= first && index <= last) {
-        nextState.current = index
+      if (index >= firstRow && index <= lastRow) {
+        nextState.currentPage = index
       }
 
-      if (index > lastInRange) {
-        nextState.firstInRange += index - lastInRange
+      if (index > lastPageInRange) {
+        nextState.firstPageInRange += index - lastPageInRange
       }
 
-      if (index < firstInRange) {
-        nextState.firstInRange = index
+      if (index < firstPageInRange) {
+        nextState.firstPageInRange = index
       }
 
       setState(nextState)
@@ -59,14 +64,17 @@ export const TableProvider: FC<TableProviderProps> = ({
 
     const paginationManager: PaginationManager = {
       state: {
-        first,
-        last,
-        current,
-        firstInRange,
-        lastInRange,
+        firstRow,
+        lastRow,
+        currentPage,
+        firstPageInRange,
+        lastPageInRange,
+        firstPage,
+        lastPage,
         lengthOfRange,
-        lengthOnPage,
-        lengthTotal,
+        lengthOfPage,
+        lengthTotalRows,
+        lengthTotalPages,
       },
       goToIndex,
     }
