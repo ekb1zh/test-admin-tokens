@@ -5,6 +5,8 @@ import { ReactComponent as ArrowNarrowLeft } from 'src/assets/icons/ArrowNarrowL
 import { ReactComponent as ArrowNarrowRight } from 'src/assets/icons/ArrowNarrowRight.svg'
 import { ReactComponent as ArrowNarrowUp } from 'src/assets/icons/ArrowNarrowUp.svg'
 import { ReactComponent as ArrowNarrowDown } from 'src/assets/icons/ArrowNarrowDown.svg'
+import { ReactComponent as Edit } from 'src/assets/icons/Edit.svg'
+import { ReactComponent as Trash } from 'src/assets/icons/Trash.svg'
 
 export const Icon = {
   DefaultAvatar,
@@ -14,4 +16,6 @@ export const Icon = {
   ArrowNarrowRight,
   ArrowNarrowUp,
   ArrowNarrowDown,
+  Edit,
+  Trash,
 }

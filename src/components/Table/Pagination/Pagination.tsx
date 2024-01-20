@@ -50,19 +50,19 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
       if (isDotsLeft) {
         range.unshift(
           <NumericButton
-            key={firstPage}
+            key={'first-button'}
             onClick={() => goToIndex(firstPage)}
             isSelected={currentPage === firstPage}
           >
             {firstPage + 1}
           </NumericButton>,
-          <Dots />,
+          <Dots key={'first-dots'} />,
         )
       } else {
         range.push(
-          <Dots />,
+          <Dots key={'last-dots'} />,
           <NumericButton
-            key={lastPage}
+            key={'last-button'}
             onClick={() => goToIndex(lastPage)}
             isSelected={currentPage === lastPage}
           >

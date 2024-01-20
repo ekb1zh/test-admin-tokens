@@ -5,66 +5,18 @@ import Divider from 'src/components/Divider'
 import Header from 'src/components/Header'
 import Icon from 'src/components/Icon'
 import Input from 'src/components/Input'
-import Table, { SortingState, TableProps } from 'src/components/Table'
-import { PaginationState } from 'src/components/Table'
+import Table, { TableProps } from 'src/components/Table'
 import Typography from 'src/components/Typography'
+import { columns } from 'src/pages/AppPage/constants'
+import {
+  initialPaginationState,
+  initialSortingState,
+} from 'src/pages/AppPage/helpers'
 import styles from 'src/pages/AppPage/AppPage.module.scss'
 
-const renderCell: NonNullable<TableProps['columns'][number]['renderCell']> = (
-  content,
-) => <Typography.Text type='body-s-medium'>{String(content)}</Typography.Text>
-
-const onClick: NonNullable<TableProps['columns'][number]['onClick']> = (
-  event,
-) => console.log(event)
-
-const sort: NonNullable<TableProps['columns'][number]['sort']> = (a, b) => a - b
-
-const columns: TableProps['columns'] = [
-  {
-    label: 'Header 1',
-    renderCell,
-    onClick,
-    sort,
-  },
-  {
-    label: 'Header 2',
-    renderCell,
-    onClick,
-    sort,
-  },
-  {
-    label: 'Header 3',
-    renderCell,
-    onClick,
-  },
-  {
-    label: 'Header 4',
-    renderCell,
-    onClick,
-  },
-  {
-    label: 'Header 5',
-    renderCell,
-    onClick,
-  },
-]
-
 const rows: TableProps['rows'] = Array.from({ length: 100 }).map(() =>
-  Array.from({ length: 5 }).map(() => Math.random()),
+  Array.from({ length: 6 }).map(() => Math.random()),
 )
-
-const initialPaginationState = (): PaginationState => ({
-  currentPage: 0,
-  firstPageInRange: 0,
-  lengthOfRange: 4,
-  lengthOfPage: 10,
-})
-
-const initialSortingState = (): SortingState => ({
-  mode: 'asc',
-  columnIndex: 0,
-})
 
 export const AppPage: FC = () => {
   const [searchValue, setSearchValue] = useState('')

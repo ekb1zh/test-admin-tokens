@@ -1,0 +1,19 @@
+.Root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Button {
+  background: none;
+  border: none;
+  padding: 0;
+
+  display: inline-flex;
+  cursor: pointer;
+
+  & > svg {
+    width: var(--tablet-spacer-lvl_2, 18px);
+    height: var(--tablet-spacer-lvl_2, 18px);
+  }
+}
