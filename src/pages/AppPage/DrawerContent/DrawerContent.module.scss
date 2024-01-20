@@ -1,0 +1,12 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--desktop-spacer-lvl_2, 20px);
+
+  // flex-shrink: 0;
+
+  width: 470px;
+  height: 100%;
+  padding: 56px 20px;
+}
