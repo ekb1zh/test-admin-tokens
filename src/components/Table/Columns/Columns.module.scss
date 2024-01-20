@@ -20,6 +20,10 @@
   border: none;
   background: none;
   cursor: pointer;
+
+  &:hover {
+    background: var(--darktheme-Gray-scale-Gray-4, #121825);
+  }
 }
 
 .CellContent {

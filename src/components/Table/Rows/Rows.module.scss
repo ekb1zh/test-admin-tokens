@@ -9,6 +9,10 @@
 .Row {
   display: flex;
   border-bottom: 1px solid var(--darktheme-Gray-scale-Gray-3, #222b44);
+
+  &:hover {
+    background: var(--darktheme-Gray-scale-Gray-3, #222b44);
+  }
 }
 
 .Cell {
