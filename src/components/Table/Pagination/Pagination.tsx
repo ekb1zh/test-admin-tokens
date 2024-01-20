@@ -15,7 +15,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
   }
 
   const {
-    state: { current, firstInRange, lengthOfRange, lengthTotal },
+    state: { current, firstInRange, lengthOfRange, lengthTotal, first, last },
     goToIndex,
   } = paginationManager
 
@@ -43,10 +43,10 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
         isDotsLeft && (
           <Fragment key='first'>
             <NumericButton
-              onClick={() => goToIndex(0)}
-              isSelected={current === 0}
+              onClick={() => goToIndex(first)}
+              isSelected={current === first}
             >
-              {1}
+              {first + 1}
             </NumericButton>
 
             <Dots />
@@ -60,10 +60,10 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
             <Dots />
 
             <NumericButton
-              onClick={() => goToIndex(lengthTotal - 1)}
-              isSelected={current === lengthTotal - 1}
+              onClick={() => goToIndex(last)}
+              isSelected={current === last}
             >
-              {lengthTotal}
+              {last + 1}
             </NumericButton>
           </Fragment>
         ),
@@ -77,7 +77,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
     <div ref={ref} className={styles.Root}>
       <ArrowButton
         onClick={() => goToIndex(current - 1)}
-        disabled={current === 0}
+        disabled={current === first}
       >
         <Icon.ArrowNarrowLeft />
       </ArrowButton>
@@ -86,7 +86,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
 
       <ArrowButton
         onClick={() => goToIndex(current + 1)}
-        disabled={current === lengthTotal - 1}
+        disabled={current === last}
       >
         <Icon.ArrowNarrowRight />
       </ArrowButton>
