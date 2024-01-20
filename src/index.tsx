@@ -8,7 +8,10 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import AppPage from 'src/pages/AppPage'
 import ErrorPage from 'src/pages/ErrorPage'
 import { queryClient } from 'src/libs/react-query'
+import { applyGlobalErrorCatching } from 'src/utils'
 // import reportWebVitals from 'src/reportWebVitals';
+
+applyGlobalErrorCatching()
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 
