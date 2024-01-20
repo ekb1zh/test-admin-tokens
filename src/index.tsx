@@ -2,9 +2,11 @@ import 'src/styles/index.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ErrorBoundary } from 'react-error-boundary'
 import { QueryClientProvider } from '@tanstack/react-query'
 
 import AppPage from 'src/pages/AppPage'
+import ErrorPage from 'src/pages/ErrorPage'
 import { queryClient } from 'src/libs/react-query'
 // import reportWebVitals from 'src/reportWebVitals';
 
@@ -12,9 +14,11 @@ const root = ReactDOM.createRoot(document.getElementById('root')!)
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AppPage />
-    </QueryClientProvider>
+    <ErrorBoundary FallbackComponent={ErrorPage}>
+      <QueryClientProvider client={queryClient}>
+        <AppPage />
+      </QueryClientProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
 )
 

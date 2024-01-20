@@ -9,6 +9,7 @@ import Table, { TableProps } from 'src/components/Table'
 import Typography from 'src/components/Typography'
 import Drawer from 'src/components/Drawer'
 import { columns } from 'src/pages/AppPage/constants'
+import { applyGlobalErrorCatching } from 'src/utils'
 import {
   initialPaginationState,
   initialSortingState,
@@ -19,6 +20,8 @@ import styles from 'src/pages/AppPage/AppPage.module.scss'
 const rows: TableProps['rows'] = Array.from({ length: 100 }).map(() =>
   Array.from({ length: 6 }).map(() => Math.random()),
 )
+
+applyGlobalErrorCatching()
 
 export const AppPage: FC = () => {
   const [searchValue, setSearchValue] = useState('')
