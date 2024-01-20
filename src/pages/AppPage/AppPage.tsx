@@ -7,6 +7,7 @@ import Icon from 'src/components/Icon'
 import Input from 'src/components/Input'
 import Table, { TableProps } from 'src/components/Table'
 import Typography from 'src/components/Typography'
+import Drawer from 'src/components/Drawer'
 import { columns } from 'src/pages/AppPage/constants'
 import {
   initialPaginationState,
@@ -22,9 +23,9 @@ export const AppPage: FC = () => {
   const [searchValue, setSearchValue] = useState('')
   const [paginationState, setPaginationState] = useState(initialPaginationState)
   const [sortingState, setSortingState] = useState(initialSortingState)
-
   const [filteredRows, setFilteredRows] = useState(rows)
   const [sortedRows, setSortedRows] = useState(filteredRows)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   useEffect(() => {
     const nextFilteredRows = rows.filter((row) =>
@@ -46,8 +47,36 @@ export const AppPage: FC = () => {
     setSortedRows(nextSortedRows)
   }, [filteredRows, sortingState])
 
+  useEffect(() => {
+    const handler = (event: WindowEventMap['keydown']) => {
+      if (event.defaultPrevented) {
+        return // Do nothing if the event was already processed
+      }
+
+      if (event.key === 'Escape') {
+        setIsDrawerOpen(false)
+      } else {
+        return
+      }
+
+      // Cancel the default action to avoid it being handled twice
+      event.preventDefault()
+    }
+
+    window.addEventListener('keydown', handler, true)
+
+    return () => window.removeEventListener('keydown', handler)
+  }, [])
+
   return (
     <div className={styles.Root}>
+      <button type='button' onClick={() => setIsDrawerOpen((prev) => !prev)}>
+        click
+      </button>
+      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+        {'awdwad'}
+      </Drawer>
+
       <Header />
 
       <Card className={styles.Card}>
