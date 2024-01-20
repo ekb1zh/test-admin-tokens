@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 export interface TableProps {
   columns: Column[]
-  rows: any[][]
+  rows: Row[]
   pagination?: Pagination
   sorting?: Sorting
   className?: string
@@ -14,11 +14,13 @@ export interface ClickEvent {
 }
 
 export interface Column<T = any> {
-  label: T
-  renderCell?: (value: T) => ReactNode
-  onClick?: (event: ClickEvent) => void
-  sort?: (a: T, b: T) => number
+  columnLabel: string | number
+  renderRowContent?: (value: T) => ReactNode
+  onClickRow?: (event: ClickEvent) => void
+  sortRows?: (a: T, b: T) => number
 }
+
+export type Row<T = any> = T[]
 
 export interface Pagination {
   state: PaginationState

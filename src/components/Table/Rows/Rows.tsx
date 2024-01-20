@@ -60,11 +60,15 @@ export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
       return
     }
 
+    if (rows.length < 1) {
+      return
+    }
+
     const { height } = window.getComputedStyle(root)
 
     setHeight(height)
     setIsShowRows(true)
-  }, [])
+  }, [rows.length])
 
   return (
     <div ref={combineRefs} className={styles.Root} style={{ height }}>
@@ -72,15 +76,15 @@ export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
         rowsSlice?.map((row, rowIndex) => (
           <div key={rowIndex} className={styles.Row}>
             {row.map((cell, cellIndex) => {
-              const { renderCell } = columns[cellIndex]
-              const content = renderCell ? renderCell(cell) : cell
-              const isClickableRow = !!columns[cellIndex].onClick
+              const { renderRowContent } = columns[cellIndex]
+              const content = renderRowContent ? renderRowContent(cell) : cell
+              const isClickableRow = !!columns[cellIndex].onClickRow
               const className = clsx(
                 styles.Cell,
                 isClickableRow && styles.Cell_clickable,
               )
               const onClick = () =>
-                columns[cellIndex].onClick?.({
+                columns[cellIndex].onClickRow?.({
                   rowIndex,
                   cellIndex,
                 })

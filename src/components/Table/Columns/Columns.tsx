@@ -25,7 +25,7 @@ export const Columns = forwardRef<HTMLDivElement>((_, ref) => {
       {columns.map((column, columnIndex) => {
         const content = (
           <Typography.Text type='body-s-medium' className={styles.CellContent}>
-            {column.label}
+            {column.columnLabel}
           </Typography.Text>
         )
 
@@ -39,7 +39,7 @@ export const Columns = forwardRef<HTMLDivElement>((_, ref) => {
           )
         ) : null
 
-        return column.sort ? (
+        return column.sortRows ? (
           <button
             key={columnIndex}
             type='button'
