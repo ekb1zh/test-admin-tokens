@@ -59,14 +59,14 @@ export const TableProvider: FC<TableProviderProps> = ({
 
     const paginationManager: PaginationManager = {
       state: {
+        first,
+        last,
         current,
         firstInRange,
+        lastInRange,
         lengthOfRange,
         lengthOnPage,
         lengthTotal,
-        first,
-        last,
-        lastInRange,
       },
       goToIndex,
     }

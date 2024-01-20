@@ -1,0 +1,20 @@
+.Root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+
+  border: none;
+  background: none;
+  user-select: none;
+  border-radius: var(--const-spacer-lvl_1, 8px);
+  cursor: pointer;
+
+  &_selected {
+    background: var(--darktheme-Accent-Primary, #1c64f2);
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--darktheme-Gray-scale-Gray-2, #313e62);
+  }
+}

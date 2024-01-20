@@ -1,8 +1,9 @@
-import { forwardRef } from 'react'
-import clsx from 'clsx'
+import { Fragment, forwardRef } from 'react'
 
-import Typography from 'src/components/Typography'
 import Icon from 'src/components/Icon'
+import ArrowButton from 'src/components/Table/Pagination/ArrowButton'
+import NumericButton from 'src/components/Table/Pagination/NumericButton'
+import Dots from 'src/components/Table/Pagination/Dots'
 import { useTableContext } from 'src/components/Table/context'
 import styles from 'src/components/Table/Pagination/Pagination.module.scss'
 
@@ -18,56 +19,53 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
     goToIndex,
   } = paginationManager
 
-  const renderNumberButton = (index: number, isSelected: boolean) => (
-    <button
-      key={index}
-      type='button'
-      className={clsx(
-        styles.Button,
-        styles.Button_NumberButton,
-        isSelected && styles.Button_NumberButton_selected,
-      )}
-      onClick={() => goToIndex(index)}
-      disabled={isSelected}
-    >
-      <Typography.Text type='body-m-medium'>{index + 1}</Typography.Text>
-    </button>
-  )
-
-  const renderDots = () => (
-    <div className={styles.Dots}>
-      <Typography.Text type='body-m-medium'>....</Typography.Text>
-    </div>
-  )
-
   const renderRange = () => {
     const numberButtons = Array.from({
       length: Math.min(lengthTotal, lengthOfRange),
-    }).map((_, index) =>
-      renderNumberButton(
-        firstInRange + index,
-        current === firstInRange + index,
-      ),
-    )
+    }).map((_, index) => {
+      const shiftIndex = firstInRange + index
+
+      return (
+        <NumericButton
+          key={shiftIndex}
+          onClick={() => goToIndex(shiftIndex)}
+          isSelected={current === shiftIndex}
+        >
+          {shiftIndex + 1}
+        </NumericButton>
+      )
+    })
 
     const isDotsLeft = current > Math.floor((lengthTotal - 1) / 2)
 
     if (lengthTotal > lengthOfRange) {
       return [
         isDotsLeft && (
-          <>
-            {renderNumberButton(0, current === 0)}
-            {renderDots()}
-          </>
+          <Fragment key='first'>
+            <NumericButton
+              onClick={() => goToIndex(0)}
+              isSelected={current === 0}
+            >
+              {1}
+            </NumericButton>
+
+            <Dots />
+          </Fragment>
         ),
 
         ...numberButtons,
 
         !isDotsLeft && (
-          <>
-            {renderDots()}
-            {renderNumberButton(lengthTotal - 1, current === lengthTotal - 1)}
-          </>
+          <Fragment key='last'>
+            <Dots />
+
+            <NumericButton
+              onClick={() => goToIndex(lengthTotal - 1)}
+              isSelected={current === lengthTotal - 1}
+            >
+              {lengthTotal}
+            </NumericButton>
+          </Fragment>
         ),
       ]
     } else {
@@ -77,25 +75,21 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref} className={styles.Root}>
-      <button
-        type='button'
-        className={clsx(styles.Button, styles.Button_ArrowButton)}
+      <ArrowButton
         onClick={() => goToIndex(current - 1)}
         disabled={current === 0}
       >
         <Icon.ArrowNarrowLeft />
-      </button>
+      </ArrowButton>
 
       {renderRange()}
 
-      <button
-        type='button'
-        className={clsx(styles.Button, styles.Button_ArrowButton)}
+      <ArrowButton
         onClick={() => goToIndex(current + 1)}
         disabled={current === lengthTotal - 1}
       >
         <Icon.ArrowNarrowRight />
-      </button>
+      </ArrowButton>
     </div>
   )
 })
