@@ -13,6 +13,7 @@ import {
   initialPaginationState,
   initialSortingState,
 } from 'src/pages/AppPage/helpers'
+import { useGetUserTransactions, useGetUsersList } from 'src/api'
 import styles from 'src/pages/AppPage/AppPage.module.scss'
 
 const rows: TableProps['rows'] = Array.from({ length: 100 }).map(() =>
@@ -26,6 +27,13 @@ export const AppPage: FC = () => {
   const [filteredRows, setFilteredRows] = useState(rows)
   const [sortedRows, setSortedRows] = useState(filteredRows)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
+  const { data: users } = useGetUsersList()
+  const { data: transactions } = useGetUserTransactions(
+    '4da67ef6-bded-4b83-a3c2-777ece7bae3a',
+  )
+
+  console.log({ users, transactions })
 
   useEffect(() => {
     const nextFilteredRows = rows.filter((row) =>
