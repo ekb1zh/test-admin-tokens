@@ -1,0 +1,27 @@
+.Root {
+  display: flex;
+
+  border-radius: var(--const-spacer-lvl_1, 8px);
+  background: var(--darktheme-base-black, #0e0c15);
+}
+
+.Cell {
+  display: flex;
+  padding: 14px var(--desktop-spacer-lvl_2, 20px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--mobile-spacer-lvl_1, 10px);
+  flex: 1 0 0;
+}
+
+.CellSortButton {
+  display: inline-flex;
+
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.CellContent {
+  color: var(--darktheme-Gray-scale-Gray-6, #9ca3af);
+}

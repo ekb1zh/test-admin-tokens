@@ -6,7 +6,7 @@ import Header from 'src/components/Header'
 import Icon from 'src/components/Icon'
 import Input from 'src/components/Input'
 import Table, { SortingState, TableProps } from 'src/components/Table'
-import { PaginationState } from 'src/components/Table/Pagination'
+import { PaginationState } from 'src/components/Table'
 import Typography from 'src/components/Typography'
 import styles from 'src/pages/AppPage/AppPage.module.scss'
 
@@ -99,7 +99,7 @@ export const AppPage: FC = () => {
       <Header />
 
       <Card className={styles.Card}>
-        <div className={styles.Text1}>
+        <div className={styles.Name}>
           <Typography.Text type='body-xl-semibold'>
             Моя организация
           </Typography.Text>
@@ -107,7 +107,7 @@ export const AppPage: FC = () => {
 
         <Divider />
 
-        <div className={styles.Text2}>
+        <div className={styles.Content}>
           <Typography.Text type='body-xl-semibold'>
             Пользователи
           </Typography.Text>

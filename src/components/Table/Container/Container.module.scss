@@ -1,0 +1,15 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+}
+
+.Footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: auto;
+  padding-top: 24px;
+}

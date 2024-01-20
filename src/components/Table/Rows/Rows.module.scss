@@ -1,0 +1,26 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  overflow: auto;
+}
+
+.Row {
+  display: flex;
+  border-bottom: 1px solid var(--darktheme-Gray-scale-Gray-3, #222b44);
+}
+
+.Cell {
+  display: flex;
+  height: 64px;
+  padding: 14px var(--desktop-spacer-lvl_2, 20px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--mobile-spacer-lvl_1, 10px);
+  flex: 1 0 0;
+
+  &_clickable {
+    cursor: pointer;
+  }
+}

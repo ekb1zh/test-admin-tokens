@@ -9,17 +9,22 @@
 }
 
 .Card {
+  display: flex;
+  flex-direction: column;
+
   height: 100%;
 }
 
-.Text1 {
+.Name {
   padding: 24px 34px;
 }
 
-.Text2 {
+.Content {
   display: flex;
   flex-direction: column;
 
   padding: 28px 34px;
   gap: 24px;
+
+  height: 100%;
 }
