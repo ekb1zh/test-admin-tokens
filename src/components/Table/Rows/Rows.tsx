@@ -2,6 +2,7 @@ import {
   forwardRef,
   MutableRefObject,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -11,10 +12,27 @@ import { useTableContext } from 'src/components/Table/context'
 import styles from 'src/components/Table/Rows/Rows.module.scss'
 
 export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
-  const { columns, rows } = useTableContext()
+  const { columns, rows, paginationManager } = useTableContext()
   const rootRef = useRef<HTMLDivElement>(null)
   const [isShowRows, setIsShowRows] = useState(false)
   const [height, setHeight] = useState('100%')
+
+  const rowsSlice = useMemo(() => {
+    if (!paginationManager) {
+      return null
+    }
+
+    const {
+      state: { currentPage, lengthOfPage },
+    } = paginationManager
+
+    const from = currentPage * lengthOfPage
+    const to = from + lengthOfPage
+
+    const slice = rows.slice(from, to)
+
+    return slice
+  }, [paginationManager, rows])
 
   const combineRefs = <T extends HTMLDivElement>(element: T) => {
     ;(rootRef as MutableRefObject<T>).current = element
@@ -51,7 +69,7 @@ export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div ref={combineRefs} className={styles.Root} style={{ height }}>
       {isShowRows &&
-        rows.map((row, rowIndex) => (
+        rowsSlice?.map((row, rowIndex) => (
           <div key={rowIndex} className={styles.Row}>
             {row.map((cell, cellIndex) => {
               const { renderCell } = columns[cellIndex]
