@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/test-beautiful-form/static/css/main.c84b9ab9.css",
+    "main.js": "/test-beautiful-form/static/js/main.91f84b65.js",
+    "static/media/SearchCircle.svg": "/test-beautiful-form/static/media/SearchCircle.354fdfde6b41977ee32748043d5a3a98.svg",
+    "static/media/Organization.svg": "/test-beautiful-form/static/media/Organization.67badba0432a8bd5c530393274434bb1.svg",
+    "static/media/DefaultAvatar.svg": "/test-beautiful-form/static/media/DefaultAvatar.8405d0bfe0a7f2837d680400c31eeff6.svg",
+    "static/media/ArrowNarrowRight.svg": "/test-beautiful-form/static/media/ArrowNarrowRight.41b14cf800bc1494c1223bd0b4a0c5b3.svg",
+    "static/media/ArrowNarrowDown.svg": "/test-beautiful-form/static/media/ArrowNarrowDown.5adc65dcbf54dca157987b3a9a60ec27.svg",
+    "static/media/ArrowNarrowUp.svg": "/test-beautiful-form/static/media/ArrowNarrowUp.efe3740bc3b4ce052177700e05dc1605.svg",
+    "static/media/ArrowNarrowLeft.svg": "/test-beautiful-form/static/media/ArrowNarrowLeft.6a0d7b48c0f87b71548b514b131e8e20.svg",
+    "index.html": "/test-beautiful-form/index.html",
+    "static/media/Edit.svg": "/test-beautiful-form/static/media/Edit.5e7142e04b5157d6a900a83ee9db7e4d.svg",
+    "static/media/Trash.svg": "/test-beautiful-form/static/media/Trash.e628c93b5a57830611885b53b17d6815.svg",
+    "static/media/Close.svg": "/test-beautiful-form/static/media/Close.5fd2114de32a2d690cf85d5e0222899d.svg",
+    "main.c84b9ab9.css.map": "/test-beautiful-form/static/css/main.c84b9ab9.css.map",
+    "main.91f84b65.js.map": "/test-beautiful-form/static/js/main.91f84b65.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c84b9ab9.css",
+    "static/js/main.91f84b65.js"
+  ]
+}
