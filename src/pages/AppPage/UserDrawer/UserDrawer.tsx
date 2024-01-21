@@ -5,6 +5,7 @@ import Icon from 'src/components/Icon'
 import Divider from 'src/components/Divider'
 import Table, { Cell, Column, Row, TableProps } from 'src/components/Table'
 import Typography from 'src/components/Typography'
+import Chart from 'src/components/Chart'
 import {
   UserDrawerData,
   UserDrawerProps,
@@ -86,7 +87,7 @@ export const UserDrawer = forwardRef<HTMLDivElement, UserDrawerProps>(
             Использование токенов
           </Typography.Text>
 
-          <Typography.Text type='body-xl-semibold'>Chart</Typography.Text>
+          <Chart />
 
           <Divider />
 
