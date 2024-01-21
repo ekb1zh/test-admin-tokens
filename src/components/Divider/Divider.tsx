@@ -7,8 +7,11 @@ import styles from 'src/components/Divider/Divider.module.scss'
 
 export const Divider = forwardRef<HTMLDivElement, DividerProps>(
   ({ type = 'horizontal', className }, ref) => {
-    const cn = clsx(styles.Root, styles[typeToClassName[type]], className)
-
-    return <div ref={ref} className={cn} />
+    return (
+      <div
+        ref={ref}
+        className={clsx(styles.Root, styles[typeToClassName[type]], className)}
+      />
+    )
   },
 )

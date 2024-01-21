@@ -6,8 +6,6 @@ import styles from 'src/components/Input/Input.module.scss'
 
 export const Input = forwardRef<HTMLDivElement, InputProps>(
   ({ className, onChange: onChangeProp, value, placeholder, icon }, ref) => {
-    const cn = clsx(styles.Root, className)
-
     const onChange: React.JSX.IntrinsicElements['input']['onChange'] = (
       event,
     ) => {
@@ -16,7 +14,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
     }
 
     return (
-      <div ref={ref} className={cn}>
+      <div ref={ref} className={clsx(styles.Root, className)}>
         {icon}
         <input
           className={styles.Input}

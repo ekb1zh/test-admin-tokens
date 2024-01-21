@@ -10,10 +10,8 @@ import styles from 'src/components/Header/Header.module.scss'
 
 export const Header = forwardRef<HTMLDivElement, HeaderProps>(
   ({ className }, ref) => {
-    const cn = clsx(styles.Card, className)
-
     return (
-      <Card ref={ref} className={cn}>
+      <Card ref={ref} className={clsx(styles.Card, className)}>
         <Logo />
         <OrganizationPanel />
         <AuthUser />

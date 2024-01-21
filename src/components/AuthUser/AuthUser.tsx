@@ -8,10 +8,8 @@ import styles from 'src/components/AuthUser/AuthUser.module.scss'
 
 export const AuthUser = forwardRef<HTMLDivElement, AuthUserProps>(
   ({ className }, ref) => {
-    const cn = clsx(styles.Root, className)
-
     return (
-      <div ref={ref} className={cn}>
+      <div ref={ref} className={clsx(styles.Root, className)}>
         <Icon.DefaultAvatar />
 
         <div className={styles.Container}>

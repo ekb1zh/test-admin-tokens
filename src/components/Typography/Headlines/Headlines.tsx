@@ -7,10 +7,15 @@ import styles from 'src/components/Typography/Headlines/Headlines.module.scss'
 
 export const Headlines = forwardRef<HTMLHeadingElement, HeadlinesProps>(
   ({ type: Component, children, className }, ref) => {
-    const cn = clsx(styles.Root, styles[typeToClassName[Component]], className)
-
     return (
-      <Component ref={ref} className={cn}>
+      <Component
+        ref={ref}
+        className={clsx(
+          styles.Root,
+          styles[typeToClassName[Component]],
+          className,
+        )}
+      >
         {children}
       </Component>
     )

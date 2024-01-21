@@ -6,10 +6,8 @@ import styles from 'src/components/Card/Card.module.scss'
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ children, className }, ref) => {
-    const cn = clsx(styles.Root, className)
-
     return (
-      <div ref={ref} className={cn}>
+      <div ref={ref} className={clsx(styles.Root, className)}>
         {children}
       </div>
     )
