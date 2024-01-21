@@ -1,26 +1,33 @@
 import { ReactNode } from 'react'
 
-export interface TableProps {
-  columns: Column[]
-  rows: Row[]
+export interface TableProps<Data = any> {
+  columns: Column<Data>[]
+  rows: Row<Data>[]
   pagination?: Pagination
   sorting?: Sorting
   className?: string
 }
 
-export interface ClickEvent {
-  rowIndex: number
+export interface ClickEvent<Data> {
+  row: Row<Data>
   cellIndex: number
 }
 
-export interface Column<T = any> {
+export interface Column<Data> {
   columnLabel: string | number
-  renderRowContent?: (value: T) => ReactNode
-  onClickRow?: (event: ClickEvent) => void
-  sortRows?: (a: T, b: T) => number
+  onClickRow?: (event: ClickEvent<Data>) => void
 }
 
-export type Row<T = any> = T[]
+export interface Row<Data> {
+  id: string
+  data: Data
+  cells: Cell[]
+}
+
+export interface Cell {
+  value: any
+  ui: ReactNode
+}
 
 export interface Pagination {
   state: PaginationState

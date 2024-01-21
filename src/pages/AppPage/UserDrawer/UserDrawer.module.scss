@@ -1,0 +1,43 @@
+.Root {
+  display: flex;
+  width: 470px;
+  height: 100%;
+  padding: 56px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--desktop-spacer-lvl_2, 20px);
+  flex-shrink: 0;
+
+  background: var(--darktheme-Gray-scale-Gray-4, #121825);
+}
+
+.EmailContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 14px;
+
+  & > svg {
+    width: var(--mobile-spacer-lvl_3, 24px);
+    height: var(--mobile-spacer-lvl_3, 24px);
+    flex-shrink: 0;
+  }
+}
+
+.CloseButton {
+  display: inline-flex;
+  background: none;
+  border: none;
+  padding: 0;
+
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.AmountPositive {
+  color: var(--Other-Green, #1abb34);
+}
+
+.AmountNegative {
+  color: var(--Other-Critic, #fe4242);
+}

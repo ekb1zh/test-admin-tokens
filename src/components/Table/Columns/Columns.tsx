@@ -29,17 +29,9 @@ export const Columns = forwardRef<HTMLDivElement>((_, ref) => {
           </Typography.Text>
         )
 
-        const isActiveSort = sorting?.state.columnIndex === columnIndex
+        const isSortable = sorting?.state.columnIndex === columnIndex
 
-        const icon = isActiveSort ? (
-          sorting.state.mode === 'asc' ? (
-            <Icon.ArrowNarrowDown />
-          ) : (
-            <Icon.ArrowNarrowUp />
-          )
-        ) : null
-
-        return column.sortRows ? (
+        return isSortable ? (
           <button
             key={columnIndex}
             type='button'
@@ -47,7 +39,11 @@ export const Columns = forwardRef<HTMLDivElement>((_, ref) => {
             onClick={onClickSort(columnIndex)}
           >
             {content}
-            {icon}
+            {sorting.state.mode === 'asc' ? (
+              <Icon.ArrowNarrowDown />
+            ) : (
+              <Icon.ArrowNarrowUp />
+            )}
           </button>
         ) : (
           <div key={columnIndex} className={styles.Cell}>

@@ -1,57 +1,107 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 
 import Card from 'src/components/Card'
 import Divider from 'src/components/Divider'
 import Header from 'src/components/Header'
 import Icon from 'src/components/Icon'
 import Input from 'src/components/Input'
-import Table, { TableProps } from 'src/components/Table'
+import Table, { Cell, Column, Row, TableProps } from 'src/components/Table'
 import Typography from 'src/components/Typography'
-import Drawer from 'src/components/Drawer'
-import { columns } from 'src/pages/AppPage/constants'
-import { applyGlobalErrorCatching } from 'src/utils'
+import UserDrawer from 'src/pages/AppPage/UserDrawer'
+import ActionCell from 'src/pages/AppPage/ActionCell'
+
 import {
   initialPaginationState,
   initialSortingState,
 } from 'src/pages/AppPage/helpers'
-import { useGetUserTransactions, useGetUsersList } from 'src/api'
+import { useGetUsersList, Schema } from 'src/api'
 import styles from 'src/pages/AppPage/AppPage.module.scss'
 
-const rows: TableProps['rows'] = Array.from({ length: 100 }).map(() =>
-  Array.from({ length: 6 }).map(() => Math.random()),
-)
-
-applyGlobalErrorCatching()
-
 export const AppPage: FC = () => {
-  const [searchValue, setSearchValue] = useState('')
-  const [paginationState, setPaginationState] = useState(initialPaginationState)
-  const [sortingState, setSortingState] = useState(initialSortingState)
-  const [filteredRows, setFilteredRows] = useState(rows)
-  const [sortedRows, setSortedRows] = useState(filteredRows)
+  const { data: users } = useGetUsersList()
+  const [selectedUser, setSelectedUser] = useState<Schema.User>()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
-  const { data: users } = useGetUsersList()
-  const { data: transactions } = useGetUserTransactions(
-    '4da67ef6-bded-4b83-a3c2-777ece7bae3a',
-  )
+  const [searchValue, setSearchValue] = useState('')
+  const [sortingState, setSortingState] = useState(initialSortingState)
+  const [paginationState, setPaginationState] = useState(initialPaginationState)
 
-  console.log({ users, transactions })
+  const { columns, rows } = useMemo<
+    Pick<TableProps<Schema.User>, 'columns' | 'rows'>
+  >(() => {
+    if (!users) {
+      return { columns: [], rows: [] }
+    }
+
+    const rows: Row<Schema.User>[] = users.data.map((user) => {
+      const {
+        email,
+        name,
+        role,
+        subscription: {
+          plan: { type },
+          tokens,
+        },
+      } = user
+
+      const cells: Cell[] = [email, name, role, type, tokens].map((value) => ({
+        value,
+        ui: <Typography.Text type='body-s-medium'>{value}</Typography.Text>,
+      }))
+
+      cells.push({ value: null, ui: <ActionCell /> })
+
+      const row: Row<Schema.User> = {
+        id: user.id,
+        data: user,
+        cells,
+      }
+
+      return row
+    })
+
+    const onClickRow: Column<Schema.User>['onClickRow'] = ({
+      row: { data: user },
+    }) => {
+      setSelectedUser(user)
+      setIsDrawerOpen(true)
+    }
+
+    const columns: Column<Schema.User>[] = [
+      'Email',
+      'Имя',
+      'Роль',
+      'Подписка',
+      'Токены',
+      'Действия',
+    ].map((columnLabel) => ({ columnLabel, onClickRow }))
+
+    return { columns, rows }
+  }, [users])
+
+  const [filteredRows, setFilteredRows] = useState(rows)
+  const [sortedRows, setSortedRows] = useState(filteredRows)
 
   useEffect(() => {
+    const searchValueLowerCase = searchValue.toLowerCase()
+
     const nextFilteredRows = rows.filter((row) =>
-      row.some((value) => String(value).includes(searchValue)),
+      row.cells.some(({ value }) =>
+        value
+          ? String(value).toLowerCase().includes(searchValueLowerCase)
+          : false,
+      ),
     )
 
     setFilteredRows(nextFilteredRows)
-  }, [searchValue])
+  }, [rows, searchValue])
 
   useEffect(() => {
     const { mode, columnIndex } = sortingState
 
-    const nextSortedRows = [...filteredRows].sort((a, b) => {
-      const v1 = a[columnIndex] as number
-      const v2 = b[columnIndex] as number
+    const nextSortedRows = [...filteredRows].sort((row1, row2) => {
+      const v1 = row1.cells[columnIndex].value as number
+      const v2 = row2.cells[columnIndex].value as number
       return mode === 'asc' ? v1 - v2 : v2 - v1
     })
 
@@ -81,12 +131,11 @@ export const AppPage: FC = () => {
 
   return (
     <div className={styles.Root}>
-      <button type='button' onClick={() => setIsDrawerOpen((prev) => !prev)}>
-        click
-      </button>
-      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-        {'awdwad'}
-      </Drawer>
+      <UserDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        user={selectedUser}
+      />
 
       <Header />
 

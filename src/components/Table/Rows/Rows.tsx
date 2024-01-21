@@ -19,7 +19,7 @@ export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
 
   const rowsSlice = useMemo(() => {
     if (!paginationManager) {
-      return null
+      return rows
     }
 
     const {
@@ -56,11 +56,7 @@ export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
   useEffect(() => {
     const { current: root } = rootRef
 
-    if (!root) {
-      return
-    }
-
-    if (rows.length < 1) {
+    if (!root || rows.length === 0) {
       return
     }
 
@@ -75,9 +71,7 @@ export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
       {isShowRows &&
         rowsSlice?.map((row, rowIndex) => (
           <div key={rowIndex} className={styles.Row}>
-            {row.map((cell, cellIndex) => {
-              const { renderRowContent } = columns[cellIndex]
-              const content = renderRowContent ? renderRowContent(cell) : cell
+            {row.cells.map(({ ui }, cellIndex) => {
               const isClickableRow = !!columns[cellIndex].onClickRow
               const className = clsx(
                 styles.Cell,
@@ -85,13 +79,13 @@ export const Rows = forwardRef<HTMLDivElement>((_, ref) => {
               )
               const onClick = () =>
                 columns[cellIndex].onClickRow?.({
-                  rowIndex,
+                  row,
                   cellIndex,
                 })
 
               return (
                 <div key={cellIndex} className={className} onClick={onClick}>
-                  {content}
+                  {ui}
                 </div>
               )
             })}
