@@ -4,7 +4,7 @@
 
 ###
 
-[> Открыть результат <](https://ekb1zh.github.io/test-beautiful-form)
+[> Открыть результат <](https://ekb1zh.github.io/test-admin-tokens)
 
 ### Установка и запуск
 

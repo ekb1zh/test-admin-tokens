@@ -2,7 +2,7 @@
   "name": "test-admin-tokens",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ekb1zh.github.io/test-beautiful-form",
+  "homepage": "https://ekb1zh.github.io/test-admin-tokens",
   "dependencies": {
     "@tanstack/react-query": "^5.17.19",
     "@testing-library/jest-dom": "^5.17.0",
