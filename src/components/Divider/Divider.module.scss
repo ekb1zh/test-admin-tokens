@@ -3,12 +3,16 @@
   border-color: var(--darktheme-Gray-scale-Gray-3, #222b44);
   border-width: 0;
 
+  height: 0;
+  width: 100%;
+
   &_horizontal {
     border-bottom-width: 1px;
   }
 
   &_vertical {
-    border-left-width: 1px;
     height: 100%;
+    width: 0;
+    border-left-width: 1px;
   }
 }

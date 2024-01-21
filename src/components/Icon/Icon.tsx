@@ -7,6 +7,7 @@ import { ReactComponent as ArrowNarrowUp } from 'src/assets/icons/ArrowNarrowUp.
 import { ReactComponent as ArrowNarrowDown } from 'src/assets/icons/ArrowNarrowDown.svg'
 import { ReactComponent as Edit } from 'src/assets/icons/Edit.svg'
 import { ReactComponent as Trash } from 'src/assets/icons/Trash.svg'
+import { ReactComponent as Close } from 'src/assets/icons/Close.svg'
 
 export const Icon = {
   DefaultAvatar,
@@ -18,4 +19,5 @@ export const Icon = {
   ArrowNarrowDown,
   Edit,
   Trash,
+  Close,
 }
