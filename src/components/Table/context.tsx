@@ -25,7 +25,12 @@ export const TableProvider: FC<TableProviderProps> = ({
     }
 
     const {
-      state: { currentPage, firstPageInRange, lengthOfRange, lengthOfPage },
+      state: {
+        currentPage: currentPageProp,
+        firstPageInRange: firstPageInRangeProp,
+        lengthOfRange,
+        lengthOfPage,
+      },
       setState,
     } = pagination
 
@@ -37,12 +42,30 @@ export const TableProvider: FC<TableProviderProps> = ({
     const firstPage = 0
     const lastPage = lengthTotalPages - 1
 
-    const lastPageInRange = firstPageInRange + lengthOfRange - 1
+    const lengthOfRangeLocal =
+      lengthOfRange > lengthTotalPages ? lengthTotalPages : lengthOfRange
+
+    let lastPageInRange = firstPageInRangeProp + (lengthOfRangeLocal - 1)
+    if (lastPageInRange > lastPage) {
+      lastPageInRange = lastPage
+    }
+
+    let firstPageInRange = lastPageInRange - (lengthOfRangeLocal - 1)
+    if (firstPageInRange < firstPage) {
+      lastPageInRange = firstPage
+    }
+
+    const currentPage =
+      currentPageProp < firstPageInRange
+        ? firstPageInRange
+        : currentPageProp > lastPageInRange
+          ? lastPageInRange
+          : currentPageProp
 
     const goToIndex = (index: number) => {
       const nextState: PaginationState = {
-        currentPage: currentPage,
-        firstPageInRange: firstPageInRange,
+        currentPage,
+        firstPageInRange,
         lengthOfRange,
         lengthOfPage,
       }
