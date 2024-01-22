@@ -13,8 +13,15 @@ $transition: linear 0.2s;
   height: 100%;
   width: 100%;
 
-  opacity: 0.6;
-  background: #000;
+  cursor: pointer;
+  visibility: hidden;
+
+  &_open {
+    visibility: visible;
+    background: #000;
+    opacity: 0.6;
+  }
+
   transition: $transition;
 }
 
@@ -28,11 +35,11 @@ $transition: linear 0.2s;
   height: 100%;
 
   background: var(--darktheme-Gray-scale-Gray-4, #121825);
-  transition: $transition;
-
   transform: translate(100%);
 
   &_open {
     transform: translate(0);
   }
+
+  transition: $transition;
 }

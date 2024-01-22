@@ -9,7 +9,10 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
   ({ isOpen, onClose, children }, ref) => {
     return createPortal(
       <div ref={ref} className={styles.Root}>
-        <div className={clsx(isOpen && styles.Backdrop)} onClick={onClose} />
+        <div
+          className={clsx(styles.Backdrop, isOpen && styles.Backdrop_open)}
+          onClick={onClose}
+        />
         <div className={clsx(styles.Sidebar, isOpen && styles.Sidebar_open)}>
           {children}
         </div>
