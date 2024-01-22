@@ -50,7 +50,7 @@ export const renderDate = (isoDate: string): ReactNode => {
   }
 
   const part1 = format(date, 'dd.MM.yy')
-  const part2 = format(date, 'kk.mm.ss')
+  const part2 = format(date, 'kk:mm:ss')
 
   return (
     <Typography.Text type='body-s-medium'>
