@@ -20,7 +20,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
       lastPage,
       currentPage,
       firstPageInRange,
-      lengthOfRange,
+      lengthOfRangeLocal,
       lengthTotalPages,
     },
     goToIndex,
@@ -28,7 +28,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
 
   const renderRange = () => {
     const range = Array.from({
-      length: Math.min(lengthOfRange, lengthTotalPages),
+      length: lengthOfRangeLocal,
     }).map((_, index) => {
       const shiftIndex = firstPageInRange + index
 
@@ -43,7 +43,7 @@ export const Pagination = forwardRef<HTMLDivElement>((_, ref) => {
       )
     })
 
-    const hasDots = lengthTotalPages > lengthOfRange
+    const hasDots = lengthTotalPages > lengthOfRangeLocal
     const isDotsLeft = currentPage > Math.floor((lengthTotalPages - 1) / 2)
 
     if (hasDots) {

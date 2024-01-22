@@ -65,6 +65,7 @@ export interface PaginationManagerState {
   lastPageInRange: number // zero-based index
   currentPage: number // zero-based index
   lengthOfRange: number
+  lengthOfRangeLocal: number
   lengthOfPage: number
   lengthTotalRows: number
   lengthTotalPages: number

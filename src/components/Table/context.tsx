@@ -95,6 +95,7 @@ export const TableProvider: FC<TableProviderProps> = ({
         firstPage,
         lastPage,
         lengthOfRange,
+        lengthOfRangeLocal,
         lengthOfPage,
         lengthTotalRows,
         lengthTotalPages,
