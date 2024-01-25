@@ -11,7 +11,7 @@ export const Columns = forwardRef<HTMLDivElement>((_, ref) => {
 
   const onClickSort = (columnIndex: number) => () => {
     if (sorting) {
-      const { state, setState } = sorting!
+      const { state, setState } = sorting
       const mode = state.mode === 'asc' ? 'desc' : 'asc'
       setState({
         columnIndex,

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as Schema from 'src/api/schema'
 import { host } from 'src/api/constants'
-import { FetchError } from 'src/api/utils'
+import { RequestError } from 'src/api/utils'
 
 export const getUserTransactions = async (
   userId: Schema.User['id'],
@@ -23,6 +23,6 @@ export const getUserTransactions = async (
   if (status === 200) {
     return data
   } else {
-    throw new FetchError(data)
+    throw new RequestError(data)
   }
 }

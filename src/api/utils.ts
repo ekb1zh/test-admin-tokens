@@ -1,4 +1,4 @@
-export class FetchError<T> extends Error {
+export class RequestError<T> extends Error {
   constructor(
     public readonly data: T,
     message?: string,

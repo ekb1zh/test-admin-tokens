@@ -25,7 +25,7 @@ export interface Row<Data> {
 }
 
 export interface Cell {
-  value: any
+  value: unknown
   ui: ReactNode
 }
 
